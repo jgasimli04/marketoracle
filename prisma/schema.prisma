@@ -32,3 +32,26 @@ model Session {
   refreshToken        String?
   refreshTokenExpires DateTime?
 }
+
+model Query {
+  id          String    @id
+  name        String?
+}
+
+model MarketSignal {
+  id              String   @id @default(uuid())
+  keyword         String
+  source          String   // 'serper', 'newsdata', 'amazon', 'ebay'
+  dataType        String   // 'search_demand', 'price', 'sentiment', 'trend'
+  rawValue        Float?
+  normalizedValue Float?
+  confidence      Float?
+  country         String
+  metadata        String?  // JSON string for source-specific data
+  createdAt       DateTime @default(now())
+
+  @@index([keyword])
+  @@index([source])
+  @@index([country])
+  @@index([createdAt])
+}
