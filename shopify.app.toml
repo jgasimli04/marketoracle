@@ -2,12 +2,11 @@
 
 client_id = "9dc4c44de648e30ac5a05b2a0c32883b"
 name = "market-oracle"
-application_url = "https://example.com"
+application_url = "https://market-oracle.fly.dev"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-include_config_on_deploy = true
 
 [webhooks]
 api_version = "2026-01"
@@ -25,4 +24,8 @@ api_version = "2026-01"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://market-oracle.fly.dev/auth/callback",
+  "https://market-oracle.fly.dev/auth/shopify/callback",
+  "https://market-oracle.fly.dev/api/auth/callback"
+]
