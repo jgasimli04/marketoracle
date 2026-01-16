@@ -1,0 +1,374 @@
+{
+  "main": {
+    "id": "2ddf13dbd44738f1",
+    "type": "split",
+    "children": [
+      {
+        "id": "b870ce3da41d90e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7d8b1e82067cd79d",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "bae80307d7deca44",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Epics/Epic 1 - Shopify Valid MVP.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Epic 1 - Shopify Valid MVP"
+            }
+          },
+          {
+            "id": "82e3272a06a00a06",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Backend/Services/svc checkout.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "svc checkout"
+            }
+          },
+          {
+            "id": "ff9ea563a4420536",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Backend/APIs/api index.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "api index"
+            }
+          },
+          {
+            "id": "aa4c5f434c900160",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Freshness.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Freshness"
+            }
+          },
+          {
+            "id": "527a542c38104ea3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aggregation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Aggregation"
+            }
+          },
+          {
+            "id": "0310727639c24c61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Linking.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Linking"
+            }
+          },
+          {
+            "id": "9347b47cd864fb35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Enrichment.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Enrichment"
+            }
+          },
+          {
+            "id": "cb7d94450f770ea3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Normalization.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Normalization"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c9bc638080c94c24",
+    "type": "split",
+    "children": [
+      {
+        "id": "e96f2dee3d3c416c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2010217e083dee29",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a340513c1f50cdd2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#qa",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "5dc6b453389801a4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 328.5
+  },
+  "right": {
+    "id": "9c4d14bcb520f145",
+    "type": "split",
+    "children": [
+      {
+        "id": "07b4bd5930578600",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b097e3c4b5c5f906",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Epics/Epic 1 - Shopify Valid MVP.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Epic 1 - Shopify Valid MVP"
+            }
+          },
+          {
+            "id": "27d98ddd1f929d33",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "5680c1d9c02bf5b5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c8881485715c10ae",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "4f0b50eb92825df5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "floating": {
+    "id": "95d62ddfbf7ceb22",
+    "type": "floating",
+    "children": [
+      {
+        "id": "cf29e1bcbd7388a5",
+        "type": "window",
+        "children": [
+          {
+            "id": "1f8866c9bef81858",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "71be76aa1c13fda9",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Market Oracle.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "Market Oracle"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 234,
+        "y": 31,
+        "width": 908,
+        "height": 989,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "bae80307d7deca44",
+  "lastOpenFiles": [
+    "Market Oracle.md",
+    "Epics/Epic 1 - Shopify Valid MVP.md",
+    "Research/Agentic Commerce.md",
+    "Sources/Connectors & feeds/Enrichment.md",
+    "Inbox/Research.md",
+    "Feature list.md",
+    "Backend/Backend.md",
+    "Backend/Infra/environments.md",
+    "Execution.md",
+    "Simulator.md",
+    "Glossary.md",
+    "Execution/Data governance/Linking.md",
+    "Execution/Data governance/Versioning.md",
+    "Product/Analytics layer/Aggregation.md",
+    "Product/Data model/Normalization.md",
+    "Product/hub.md",
+    "Backend/Services/svc checkout.md",
+    "Backend/Services/svc pricing.md",
+    "Backend/Services/svc catalog.md",
+    "Backend/Services/svc auth.md",
+    "Backend/Runbooks/playbooks.md",
+    "Backend/Runbooks/incidents.md",
+    "Backend/Runbooks/oncall.md",
+    "Backend/Security/threat model.md",
+    "Backend/Security/rls policies.md",
+    "Backend/Security/authN Authz.md",
+    "Backend/Runbooks",
+    "Backend/Security",
+    "Backend/Infra/Untitled",
+    "Backend/Infra",
+    "Backend/Data",
+    "Backend/APIs",
+    "Backend/Services",
+    "Backend/Architecture",
+    "Backend",
+    "Untitled.canvas",
+    "Untitled.base",
+    "Spine.canvas",
+    "20 - Market Oracle Product.canvas"
+  ]
+}

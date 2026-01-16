@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"d474bf403328d6db","type":"file","file":"Sources (origin).md","x":-260,"y":-780,"width":400,"height":400},
+		{"id":"89dd636779ab7a2e","type":"file","file":"Market Sizing (2030).md","x":240,"y":-780,"width":400,"height":400},
+		{"id":"9e8ef8a9a7bfdbe9","type":"file","file":"Trust Gap.md","x":720,"y":-780,"width":400,"height":400},
+		{"id":"ba7e46148e2cd170","type":"file","file":"Trust Primitives.md","x":1200,"y":-780,"width":400,"height":400},
+		{"id":"0e6570d224d0028d","type":"file","file":"Market Oracle(wedge).md","x":1680,"y":-780,"width":400,"height":400},
+		{"id":"a0450bd3ca65ed32","type":"file","file":"Execution.md","x":2160,"y":-780,"width":400,"height":400},
+		{"id":"904a5414115de0bc","type":"text","text":"Vectors \n[[]]","x":1311,"y":104,"width":250,"height":116},
+		{"id":"a2d3ffb50fa6a52b","type":"text","text":"Prompt\n[[[\"[I need the **best** *headphones* for ***traveling*** that **delivers by january 28th** under ***300 dollars***.]()\"]]","x":760,"y":-240,"width":250,"height":200},
+		{"id":"6a2ccb825064f93a","type":"text","text":"Intent","x":1135,"y":320,"width":250,"height":60},
+		{"id":"a5e679350d7303ff","type":"text","text":"Context","x":1555,"y":320,"width":250,"height":60},
+		{"id":"b27557ee5097bb20","type":"text","text":"Range","x":1311,"y":460,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"fb5a23b7fae9471a","fromNode":"d474bf403328d6db","fromSide":"right","toNode":"89dd636779ab7a2e","toSide":"left"},
+		{"id":"e7bca1c41840a231","fromNode":"89dd636779ab7a2e","fromSide":"right","toNode":"9e8ef8a9a7bfdbe9","toSide":"left"},
+		{"id":"cbad4533ed9b41bd","fromNode":"9e8ef8a9a7bfdbe9","fromSide":"right","toNode":"ba7e46148e2cd170","toSide":"left"},
+		{"id":"222fd5a5788e8c56","fromNode":"ba7e46148e2cd170","fromSide":"right","toNode":"0e6570d224d0028d","toSide":"left"},
+		{"id":"f0e0ac5268718dcc","fromNode":"0e6570d224d0028d","fromSide":"right","toNode":"a0450bd3ca65ed32","toSide":"left"},
+		{"id":"76fa885448a9b2ea","fromNode":"a2d3ffb50fa6a52b","fromSide":"bottom","toNode":"904a5414115de0bc","toSide":"top"},
+		{"id":"fc1e0ded83c54ff7","fromNode":"904a5414115de0bc","fromSide":"bottom","toNode":"a5e679350d7303ff","toSide":"top"},
+		{"id":"6f5b8c500e8ed1ce","fromNode":"904a5414115de0bc","fromSide":"bottom","toNode":"6a2ccb825064f93a","toSide":"top"},
+		{"id":"358867c3b2691d6e","fromNode":"904a5414115de0bc","fromSide":"bottom","toNode":"b27557ee5097bb20","toSide":"top"}
+	]
+}
