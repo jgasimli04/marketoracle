@@ -1,0 +1,56 @@
+---
+title: MetafieldCapabilitySmartCollectionConditionInput - GraphQL Admin
+description: >-
+  The input fields for enabling and disabling the smart collection condition
+  capability.
+api_version: 2026-01
+api_name: admin
+type: input-object
+api_type: graphql
+source_url:
+  html: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldCapabilitySmartCollectionConditionInput
+  md: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldCapabilitySmartCollectionConditionInput.md
+---
+
+# Metafield​Capability​Smart​Collection​Condition​Input
+
+input\_object
+
+The input fields for enabling and disabling the smart collection condition capability.
+
+## Fields
+
+* enabled
+
+  [Boolean!](https://shopify.dev/docs/api/admin-graphql/latest/scalars/Boolean)
+
+  non-null
+
+  Indicates whether the capability should be enabled or disabled.
+
+***
+
+## Input objects using this input
+
+* [Metafield​Capability​Create​Input.smartCollectionCondition](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldCapabilityCreateInput#fields-smartCollectionCondition)
+
+  INPUT OBJECT
+
+  The input fields for creating a metafield capability.
+
+* [Metafield​Capability​Update​Input.smartCollectionCondition](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldCapabilityUpdateInput#fields-smartCollectionCondition)
+
+  INPUT OBJECT
+
+  The input fields for updating a metafield capability.
+
+***
+
+## Map
+
+### Input objects using this input
+
+* [Metafield​Capability​Create​Input.smartCollectionCondition](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldCapabilityCreateInput#fields-smartCollectionCondition)
+* [Metafield​Capability​Update​Input.smartCollectionCondition](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldCapabilityUpdateInput#fields-smartCollectionCondition)

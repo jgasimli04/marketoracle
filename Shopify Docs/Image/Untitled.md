@@ -1,0 +1,1 @@
+Image query logic research

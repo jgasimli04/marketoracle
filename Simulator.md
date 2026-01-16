@@ -14,4 +14,6 @@ Domain: To be able to find the perfect ratio of context and intent scores. It is
 	**Context**
 	In this block we are going to form the idea of what the context is, how is it obtained and where does it originate from. Think of context as the nets where there are empty nodes that are elastic, an object [matrix] that houses vectors, that are obtained from the prompt. 
 	 The logic works by asking the right questions and giving each instance a value that will be correct with respect to the context range. 
-	
+
+---
+Prompt polishing: Fills the blank fields for you with recommended closest hits, giving you the ability to adjust it for best accuracy. 

@@ -1,0 +1,47 @@
+---
+title: DeliveryAvailableService - GraphQL Admin
+description: A shipping service and a list of countries that the service is available for.
+api_version: 2026-01
+api_name: admin
+type: object
+api_type: graphql
+source_url:
+  html: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryAvailableService
+  md: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryAvailableService.md
+---
+
+# Delivery​Available​Service
+
+object
+
+Requires Any of `orders` or `shipping` access scopes or `manage_delivery_settings` user permission.
+
+A shipping service and a list of countries that the service is available for.
+
+## Fields
+
+* countries
+
+  [Delivery​Country​Codes​Or​Rest​Of​World!](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryCountryCodesOrRestOfWorld)
+
+  non-null
+
+  The countries the service provider ships to.
+
+* name
+
+  [String!](https://shopify.dev/docs/api/admin-graphql/latest/scalars/String)
+
+  non-null
+
+  The name of the service.
+
+***
+
+## Map
+
+### Fields with this object
+
+* {}[DeliveryCarrierService.availableServicesForCountries](https://shopify.dev/docs/api/admin-graphql/latest/objects/DeliveryCarrierService#field-DeliveryCarrierService.fields.availableServicesForCountries)

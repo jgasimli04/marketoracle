@@ -1,0 +1,105 @@
+---
+title: ProductCreatePayload - GraphQL Admin
+description: Return type for `productCreate` mutation.
+api_version: 2026-01
+api_name: admin
+type: payload
+api_type: graphql
+source_url:
+  html: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/payloads/ProductCreatePayload
+  md: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/payloads/ProductCreatePayload.md
+---
+
+# Product​Create​Payload
+
+payload
+
+Return type for `productCreate` mutation.
+
+## Fields
+
+* product
+
+  [Product](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product)
+
+  The product object.
+
+* shop
+
+  [Shop!](https://shopify.dev/docs/api/admin-graphql/latest/objects/Shop)
+
+  non-null
+
+  The shop associated with the product.
+
+* user​Errors
+
+  [\[User​Error!\]!](https://shopify.dev/docs/api/admin-graphql/latest/objects/UserError)
+
+  non-null
+
+  The list of errors that occurred from executing the mutation.
+
+***
+
+## Mutations with this payload
+
+* [product​Create](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate)
+
+  mutation
+
+  Creates a [product](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product) with attributes such as title, description, vendor, and media.
+
+  The `productCreate` mutation helps you create many products at once, avoiding the tedious or time-consuming process of adding them one by one in the Shopify admin. Common examples include creating products for a new collection, launching a new product line, or adding seasonal products.
+
+  You can define product [options](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOption) and [values](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductOptionValue), allowing you to create products with different variations like sizes or colors. You can also associate media files to your products, including images and videos.
+
+  The `productCreate` mutation only supports creating a product with its initial [product variant](https://shopify.dev/docs/api/admin-graphql/latest/objects/ProductVariant). To create multiple product variants for a single product and manage prices, use the [`productVariantsBulkCreate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productVariantsBulkCreate) mutation.
+
+  ***
+
+  Note
+
+  The `productCreate` mutation has a [throttle](https://shopify.dev/docs/api/usage/rate-limits#resource-based-rate-limits) that takes effect when a store has 50,000 product variants. After this threshold is reached, no more than 1,000 new product variants can be created per day.
+
+  ***
+
+  After you create a product, you can make subsequent edits to the product using one of the following mutations:
+
+  * [`publishablePublish`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/publishablePublish): Used to publish the product and make it available to customers. The `productCreate` mutation creates products in an unpublished state by default, so you must perform a separate operation to publish the product.
+  * [`productUpdate`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productUpdate): Used to update a single product, such as changing the product's title, description, vendor, or associated media.
+  * [`productSet`](https://shopify.dev/docs/api/admin-graphql/latest/mutations/productSet): Used to perform multiple operations on products, such as creating or modifying product options and variants.
+
+  Learn more about the [product model](https://shopify.dev/docs/apps/build/graphql/migrate/new-product-model) and [adding product data](https://shopify.dev/docs/apps/build/graphql/migrate/new-product-model/add-data).
+
+  * input
+
+    [Product​Input](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/ProductInput)
+
+    Deprecated
+
+    ### Arguments
+
+  * product
+
+    [Product​Create​Input](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/ProductCreateInput)
+
+    The attributes of the new product.
+
+  * media
+
+    [\[Create​Media​Input!\]](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/CreateMediaInput)
+
+    The media to add to the product.
+
+  ***
+
+***
+
+## Map
+
+### Mutations with this payload
+
+* [product​Create](https://shopify.dev/docs/api/admin-graphql/latest/types/productCreate)

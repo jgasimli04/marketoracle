@@ -1,0 +1,291 @@
+---
+title: mobilePlatformApplicationDelete - GraphQL Admin
+description: Delete a mobile platform application.
+api_version: 2026-01
+api_name: admin
+type: mutation
+api_type: graphql
+source_url:
+  html: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/mutations/mobilePlatformApplicationDelete
+  md: >-
+    https://shopify.dev/docs/api/admin-graphql/latest/mutations/mobilePlatformApplicationDelete.md
+---
+
+# mobile​Platform​Application​Delete
+
+mutation
+
+Requires `write_mobile_platform_applications` access scope. Please contact Shopify Support to enable this scope for your app.
+
+Delete a mobile platform application.
+
+## Arguments
+
+* id
+
+  [ID!](https://shopify.dev/docs/api/admin-graphql/latest/scalars/ID)
+
+  required
+
+  The ID of the Mobile Platform Application to be deleted.
+
+***
+
+## Mobile​Platform​Application​Delete​Payload returns
+
+* deleted​Mobile​Platform​Application​Id
+
+  [ID](https://shopify.dev/docs/api/admin-graphql/latest/scalars/ID)
+
+  The ID of the mobile platform application that was just deleted.
+
+* user​Errors
+
+  [\[Mobile​Platform​Application​User​Error!\]!](https://shopify.dev/docs/api/admin-graphql/latest/objects/MobilePlatformApplicationUserError)
+
+  non-null
+
+  The list of errors that occurred from executing the mutation.
+
+***
+
+## Examples
+
+* ### Delete a mobile platform application
+
+  #### Description
+
+  Delete a Mobile Platform Application.
+
+  #### Query
+
+  ```graphql
+  mutation DeleteMobilePlatformApplication($id: ID!) {
+    mobilePlatformApplicationDelete(id: $id) {
+      deletedMobilePlatformApplicationId
+    }
+  }
+  ```
+
+  #### Variables
+
+  ```json
+  {
+    "id": "gid://shopify/MobilePlatformApplication/1066176028"
+  }
+  ```
+
+  #### cURL
+
+  ```bash
+  curl -X POST \
+  https://your-development-store.myshopify.com/admin/api/2026-01/graphql.json \
+  -H 'Content-Type: application/json' \
+  -H 'X-Shopify-Access-Token: {access_token}' \
+  -d '{
+  "query": "mutation DeleteMobilePlatformApplication($id: ID!) { mobilePlatformApplicationDelete(id: $id) { deletedMobilePlatformApplicationId } }",
+   "variables": {
+      "id": "gid://shopify/MobilePlatformApplication/1066176028"
+    }
+  }'
+  ```
+
+  #### React Router
+
+  ```javascript
+  import { authenticate } from "../shopify.server";
+
+  export const loader = async ({request}) => {
+    const { admin } = await authenticate.admin(request);
+    const response = await admin.graphql(
+      `#graphql
+    mutation DeleteMobilePlatformApplication($id: ID!) {
+      mobilePlatformApplicationDelete(id: $id) {
+        deletedMobilePlatformApplicationId
+      }
+    }`,
+    {
+      variables: {
+          "id": "gid://shopify/MobilePlatformApplication/1066176028"
+      },
+    },
+    );
+    const json = await response.json();
+    return json.data;
+  }
+  ```
+
+  #### Ruby
+
+  ```ruby
+  session = ShopifyAPI::Auth::Session.new(
+    shop: "your-development-store.myshopify.com",
+    access_token: access_token
+  )
+  client = ShopifyAPI::Clients::Graphql::Admin.new(
+    session: session
+  )
+
+  query = <<~QUERY
+    mutation DeleteMobilePlatformApplication($id: ID!) {
+      mobilePlatformApplicationDelete(id: $id) {
+        deletedMobilePlatformApplicationId
+      }
+    }
+  QUERY
+
+  variables = {
+    "id": "gid://shopify/MobilePlatformApplication/1066176028"
+  }
+
+  response = client.query(query: query, variables: variables)
+  ```
+
+  #### Node.js
+
+  ```javascript
+  const client = new shopify.clients.Graphql({session});
+  const data = await client.query({
+    data: {
+      "query": `mutation DeleteMobilePlatformApplication($id: ID!) {
+        mobilePlatformApplicationDelete(id: $id) {
+          deletedMobilePlatformApplicationId
+        }
+      }`,
+      "variables": {
+          "id": "gid://shopify/MobilePlatformApplication/1066176028"
+      },
+    },
+  });
+  ```
+
+  #### Response
+
+  ```json
+  {
+    "mobilePlatformApplicationDelete": {
+      "deletedMobilePlatformApplicationId": "gid://shopify/MobilePlatformApplication/1066176028"
+    }
+  }
+  ```
+
+* ### mobilePlatformApplicationDelete reference
+
+[Open in GraphiQL](http://localhost:3457/graphiql?query=mutation%20DeleteMobilePlatformApplication\(%24id%3A%20ID!\)%20%7B%0A%20%20mobilePlatformApplicationDelete\(id%3A%20%24id\)%20%7B%0A%20%20%20%20deletedMobilePlatformApplicationId%0A%20%20%7D%0A%7D\&variables=%7B%0A%20%20%22id%22%3A%20%22gid%3A%2F%2Fshopify%2FMobilePlatformApplication%2F1066176028%22%0A%7D)
+
+##### GQL
+
+```graphql
+mutation DeleteMobilePlatformApplication($id: ID!) {
+  mobilePlatformApplicationDelete(id: $id) {
+    deletedMobilePlatformApplicationId
+  }
+}
+```
+
+##### cURL
+
+```bash
+curl -X POST \
+https://your-development-store.myshopify.com/admin/api/2026-01/graphql.json \
+-H 'Content-Type: application/json' \
+-H 'X-Shopify-Access-Token: {access_token}' \
+-d '{
+"query": "mutation DeleteMobilePlatformApplication($id: ID!) { mobilePlatformApplicationDelete(id: $id) { deletedMobilePlatformApplicationId } }",
+ "variables": {
+    "id": "gid://shopify/MobilePlatformApplication/1066176028"
+  }
+}'
+```
+
+##### React Router
+
+```javascript
+import { authenticate } from "../shopify.server";
+
+export const loader = async ({request}) => {
+  const { admin } = await authenticate.admin(request);
+  const response = await admin.graphql(
+    `#graphql
+  mutation DeleteMobilePlatformApplication($id: ID!) {
+    mobilePlatformApplicationDelete(id: $id) {
+      deletedMobilePlatformApplicationId
+    }
+  }`,
+  {
+    variables: {
+        "id": "gid://shopify/MobilePlatformApplication/1066176028"
+    },
+  },
+  );
+  const json = await response.json();
+  return json.data;
+}
+```
+
+##### Node.js
+
+```javascript
+const client = new shopify.clients.Graphql({session});
+const data = await client.query({
+  data: {
+    "query": `mutation DeleteMobilePlatformApplication($id: ID!) {
+      mobilePlatformApplicationDelete(id: $id) {
+        deletedMobilePlatformApplicationId
+      }
+    }`,
+    "variables": {
+        "id": "gid://shopify/MobilePlatformApplication/1066176028"
+    },
+  },
+});
+```
+
+##### Ruby
+
+```ruby
+session = ShopifyAPI::Auth::Session.new(
+  shop: "your-development-store.myshopify.com",
+  access_token: access_token
+)
+client = ShopifyAPI::Clients::Graphql::Admin.new(
+  session: session
+)
+
+query = <<~QUERY
+  mutation DeleteMobilePlatformApplication($id: ID!) {
+    mobilePlatformApplicationDelete(id: $id) {
+      deletedMobilePlatformApplicationId
+    }
+  }
+QUERY
+
+variables = {
+  "id": "gid://shopify/MobilePlatformApplication/1066176028"
+}
+
+response = client.query(query: query, variables: variables)
+```
+
+## Input variables
+
+JSON
+
+```json
+{
+  "id": "gid://shopify/MobilePlatformApplication/1066176028"
+}
+```
+
+## Response
+
+JSON
+
+```json
+{
+  "mobilePlatformApplicationDelete": {
+    "deletedMobilePlatformApplicationId": "gid://shopify/MobilePlatformApplication/1066176028"
+  }
+}
+```
