@@ -248,14 +248,21 @@ Rows with missing or empty titles are skipped.
 - The model is loaded lazily on first use
 
 ### Milvus Backend
-- Collection schema: id (PK), embedding (FLOAT_VECTOR), title, description, price, image_url
-- Index: IVF_FLAT with 128 clusters
-- Metric: COSINE similarity
+- Collection schema: id (VARCHAR, PK, max_length=128), embedding (FLOAT_VECTOR, dim=384), title (VARCHAR), description (VARCHAR), price (FLOAT), image_url (VARCHAR)
+- Index: IVF_FLAT with 128 clusters (nlist=128)
+- Metric: COSINE (returns cosine similarity directly; higher score = more similar)
 
 ### PostgreSQL Backend
-- Table schema: id (PK), title, description, price, image_url, embedding (VECTOR(384))
-- Index: IVFFlat with 100 lists
-- Metric: COSINE distance (`<=>` operator)
+- Table schema: id (TEXT, PK), title (TEXT), description (TEXT), price (NUMERIC), image_url (TEXT), embedding (VECTOR(384))
+- Index: IVFFlat with 100 lists using `vector_cosine_ops`
+- Metric: Cosine distance via `<=>` operator, converted to similarity as `1 - distance` for output
+
+### Score Normalization
+Both backends return a **similarity score** where higher values indicate greater similarity:
+- Milvus returns cosine similarity natively (range: -1 to 1 for normalized vectors)
+- PostgreSQL computes `1 - cosine_distance` to match Milvus semantics
+
+This ensures consistent score interpretation across backends when switching via `--db-type`.
 
 ## Troubleshooting
 
