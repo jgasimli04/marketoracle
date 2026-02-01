@@ -12,9 +12,6 @@ interface ProductInputPanelProps {
   setProductUrl: (v: string) => void;
   additionalContext: string;
   setAdditionalContext: (v: string) => void;
-  onAnalyze: () => void;
-  analyzeDisabled: boolean;
-  analyzeLoading?: boolean;
 }
 
 export function ProductInputPanel({
@@ -28,9 +25,6 @@ export function ProductInputPanel({
   setProductUrl,
   additionalContext,
   setAdditionalContext,
-  onAnalyze,
-  analyzeDisabled,
-  analyzeLoading = false,
 }: ProductInputPanelProps) {
   return (
     <Card>
@@ -90,14 +84,7 @@ export function ProductInputPanel({
           autoComplete="off"
           type="url"
         />
-        <Button
-          variant="primary"
-          disabled={analyzeDisabled}
-          loading={analyzeLoading}
-          onClick={onAnalyze}
-        >
-          Analyze
-        </Button>
+        {/* Analyze button moved to Chatbox in left sidebar */}
       </FormLayout>
     </Card>
   );
