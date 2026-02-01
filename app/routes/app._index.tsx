@@ -1,9 +1,11 @@
-import { Box, Divider, Text } from "@shopify/polaris";
+import { Box, Divider, Text, Button, ButtonGroup } from "@shopify/polaris";
+import { ProductCardFieldPopover } from "../components/ProductCardFieldPopover";
 import { Chatbox } from "../components/Chatbox";
 import { useState, useRef, useEffect } from "react";
 import { DecisionTerminal } from "../components/DecisionTerminal";
 import { ProductInputPanel } from "../components/ProductInputPanel";
 import { GuideSidebar } from "../components/GuideSidebar";
+import { JSONMirror } from "../components/JSONMirror";
 
 // Get video URL from environment (Remix convention)
 const videoUrl = typeof process !== 'undefined' && process.env.ORAKEN_GUIDE_VIDEO_URL ? process.env.ORAKEN_GUIDE_VIDEO_URL : undefined;
@@ -17,13 +19,11 @@ export default function Index() {
   // Product card type and state
   interface ProductCard {
     id: string;
-    name: string;
-    category: string;
-    image: File | null;
-    url: string;
+    fields: Record<string, string>;
+    status: 'incomplete' | 'ready';
   }
   const [products, setProducts] = useState<ProductCard[]>([
-    { id: crypto.randomUUID(), name: '', category: '', image: null, url: '' }
+    { id: crypto.randomUUID(), fields: { name: '' }, status: 'incomplete' }
   ]);
   const [activeProductId, setActiveProductId] = useState<string>(products[0].id);
 
@@ -42,7 +42,7 @@ export default function Index() {
       ? products.find(p => p.id === analyzedProductId) || products[0]
       : activeProduct;
   // For Analyze button
-  const analyzeDisabled = !(activeProduct.name.trim() && activeProduct.category.trim()) || appState === 'ANALYZING';
+  const analyzeDisabled = !activeProduct.fields.name?.trim() || appState === 'ANALYZING';
   const analyzeLoading = appState === 'ANALYZING';
 
   // Log steps definition
@@ -53,11 +53,11 @@ export default function Index() {
     },
     {
       icon: '⏳',
-      text: `Fetching demand trends for ${activeProduct.name || '[Product Name]'}...`,
+      text: `Fetching demand trends for ${activeProduct.fields.name || '[Product Name]'}...`,
     },
     {
       icon: '⏳',
-      text: `Analyzing competitor landscape in ${activeProduct.category || '[Category]'}...`,
+      text: `Analyzing competitor landscape in ${activeProduct.fields.category || '[Category]'}...`,
     },
     {
       icon: '⏳',
@@ -144,10 +144,10 @@ export default function Index() {
         <div style={{ flex: 1, overflowY: 'auto' }}>
           <Box padding="0">
             <DecisionTerminal
-              productName={terminalProduct.name}
-              category={terminalProduct.category}
-              imageProvided={!!terminalProduct.image}
-              productUrl={terminalProduct.url}
+              productName={terminalProduct.fields.name || ''}
+              category={terminalProduct.fields.category || ''}
+              imageProvided={false}
+              productUrl={terminalProduct.fields.url || ''}
               additionalContext={chatboxValue}
               appState={appState}
               logQueue={logQueue}
@@ -162,6 +162,7 @@ export default function Index() {
             onAnalyze={handleAnalyze}
             analyzeDisabled={analyzeDisabled}
             analyzeLoading={analyzeLoading}
+            replyingTo={`Replying to Product ${products.findIndex(p => p.id === activeProductId) + 1}`}
           />
         </div>
       </div>
@@ -169,9 +170,25 @@ export default function Index() {
       <div style={{ flex: '1 1 0%', minWidth: 0, maxWidth: '100%', height: '100vh', display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
         <Box padding="0">
           {/* Branding Header */}
-          <div style={{ padding: 24, borderBottom: '1px solid var(--p-color-border-subdued)' }}>
-            <Text as="h1" variant="headingLg">ORAKEN</Text>
-            <Text as="p" variant="bodyMd" tone="subdued">Paste a product idea or define your product below.</Text>
+          <div style={{ padding: 24, borderBottom: '1px solid var(--p-color-border-subdued)', textAlign: 'center' }}>
+            <Text as="h1" variant="heading3xl">ORAKEN</Text>
+            <Text as="h4" variant="headingMd" tone="subdued">Paste a product idea or use a template below.</Text>
+            <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center' }}>
+              <ButtonGroup>
+                <Button onClick={() => setProducts([
+                  { id: crypto.randomUUID(), fields: { name: 'Wireless Earbuds', category: 'Electronics', price: '49.99', stock: '100', location: 'Shenzhen' }, status: 'ready' },
+                  { id: crypto.randomUUID(), fields: { name: 'Yoga Mat', category: 'Fitness', price: '19.99', stock: '200', location: 'LA' }, status: 'ready' },
+                ])}>Dropshipping</Button>
+                <Button onClick={() => setProducts([
+                  { id: crypto.randomUUID(), fields: { name: 'Custom Mug', category: 'Home', price: '12.99', stock: '500', location: 'NY' }, status: 'ready' },
+                  { id: crypto.randomUUID(), fields: { name: 'Branded T-Shirt', category: 'Apparel', price: '24.99', stock: '300', location: 'LA' }, status: 'ready' },
+                ])}>Private Label</Button>
+                <Button onClick={() => setProducts([
+                  { id: crypto.randomUUID(), fields: { name: 'Custom Poster', category: 'Art', price: '9.99', stock: '1000', location: 'Berlin' }, status: 'ready' },
+                  { id: crypto.randomUUID(), fields: { name: 'Printed Hoodie', category: 'Apparel', price: '39.99', stock: '150', location: 'London' }, status: 'ready' },
+                ])}>Print on Demand</Button>
+              </ButtonGroup>
+            </div>
           </div>
           {/* Product Cards List */}
           <div style={{ padding: 24, paddingTop: 0 }}>
@@ -180,16 +197,36 @@ export default function Index() {
                 key={product.id}
                 style={{
                   marginBottom: 24,
-                  border: '1px solid var(--p-color-border-subdued)',
-                  background: '#fff',
-                  boxShadow: '0 1px 2px rgba(0,0,0,0.01)',
-                  outline: product.id === activeProductId ? '2px solid #005bd3' : 'none',
+                  border: product.id === activeProductId ? '2px solid #303030' : '1px solid var(--p-color-border-subdued)',
+                  background: 'var(--p-color-bg-surface, #fff)',
+                  boxShadow: product.id === activeProductId ? 'var(--p-shadow-100, 0 2px 8px rgba(50,50,50,0.08))' : 'none',
+                  borderRadius: 0,
                   cursor: 'pointer',
+                  transition: 'box-shadow 0.2s, border 0.2s',
                 }}
                 onClick={() => setActiveProductId(product.id)}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 16 }}>
-                  <Text as="h2" variant="headingSm">Product {idx + 1}</Text>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <Text as="h2" variant="headingSm">Product {idx + 1}</Text>
+                    {/* Status Dot & Tooltip */}
+                    <span style={{ position: 'relative', display: 'inline-block' }}>
+                      <span
+                        style={{
+                          display: 'inline-block',
+                          width: 12,
+                          height: 12,
+                          borderRadius: '50%',
+                          background: product.fields.name?.trim() ? '#36B37E' : '#D72C0D',
+                          border: '1.5px solid #fff',
+                          boxShadow: '0 0 0 1.5px #E3E3E3',
+                          marginLeft: 2,
+                          cursor: 'pointer',
+                        }}
+                        title={product.fields.name?.trim() ? 'Ready: All required fields filled' : 'Incomplete: Product Name is required'}
+                      />
+                    </span>
+                  </div>
                   <button
                     aria-label="Delete product"
                     style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#d72c0d', fontSize: 18 }}
@@ -199,20 +236,29 @@ export default function Index() {
                 </div>
                 <div style={{ padding: 16 }}>
                   {product.id === activeProductId ? (
-                    <ProductInputPanel
-                      productName={product.name}
-                      setProductName={name => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, name } : p))}
-                      category={product.category}
-                      setCategory={category => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, category } : p))}
-                      imageFile={product.image}
-                      setImageFile={image => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, image } : p))}
-                      productUrl={product.url}
-                      setProductUrl={url => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, url } : p))}
-                      additionalContext={chatboxValue}
-                      setAdditionalContext={setChatboxValue}
-                    />
+                    <>
+                      <ProductInputPanel
+                        productName={product.fields.name || ''}
+                        setProductName={name => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, fields: { ...p.fields, name } } : p))}
+                        category={product.fields.category || ''}
+                        setCategory={category => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, fields: { ...p.fields, category } } : p))}
+                        imageFile={null}
+                        setImageFile={() => {}}
+                        productUrl={product.fields.url || ''}
+                        setProductUrl={url => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, fields: { ...p.fields, url } } : p))}
+                        additionalContext={chatboxValue}
+                        setAdditionalContext={setChatboxValue}
+                      />
+                      <div style={{ marginTop: 12 }}>
+                        <ProductCardFieldPopover
+                          onAddField={field => setProducts(ps => ps.map(p => p.id === product.id ? { ...p, fields: { ...p.fields, [field]: '' } } : p))}
+                          existingFields={Object.keys(product.fields)}
+                          category={product.fields.category}
+                        />
+                      </div>
+                    </>
                   ) : (
-                    <Text as="span" variant="bodySm" tone="subdued">Name: {product.name || '—'} | Category: {product.category || '—'}</Text>
+                    <Text as="span" variant="bodySm" tone="subdued">Name: {product.fields.name || '—'} | Category: {product.fields.category || '—'}</Text>
                   )}
                 </div>
               </div>
@@ -221,7 +267,7 @@ export default function Index() {
             <div style={{ textAlign: 'center', marginTop: 16 }}>
               <button
                 style={{ background: '#005bd3', color: '#fff', border: 'none', borderRadius: 0, padding: '12px 32px', fontSize: 18, cursor: 'pointer' }}
-                onClick={() => setProducts(products => [...products, { id: crypto.randomUUID(), name: '', category: '', image: null, url: '' }])}
+                onClick={() => setProducts(products => [...products, { id: crypto.randomUUID(), fields: { name: '' }, status: 'incomplete' }])}
               >
                 ＋ Add Product
               </button>
@@ -233,6 +279,9 @@ export default function Index() {
       <div style={{ width: 320, minWidth: 280, maxWidth: 360, height: '100vh', display: 'flex', flexDirection: 'column', borderLeft: '1px solid var(--p-color-border-subdued)' }}>
         <Box padding="0">
           <GuideSidebar videoUrl={videoUrl} />
+          <div style={{ marginTop: 24 }}>
+            <JSONMirror products={products} setProducts={setProducts} />
+          </div>
         </Box>
       </div>
     </div>

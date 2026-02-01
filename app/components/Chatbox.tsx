@@ -1,4 +1,4 @@
-import { Box, TextField, Button } from "@shopify/polaris";
+import { Box, TextField, Button, Tag } from "@shopify/polaris";
 import { useState } from "react";
 
 interface ChatboxProps {
@@ -7,11 +7,17 @@ interface ChatboxProps {
   onAnalyze: () => void;
   analyzeDisabled: boolean;
   analyzeLoading?: boolean;
+  replyingTo?: string;
 }
 
-export function Chatbox({ value, onChange, onAnalyze, analyzeDisabled, analyzeLoading = false }: ChatboxProps) {
+export function Chatbox({ value, onChange, onAnalyze, analyzeDisabled, analyzeLoading = false, replyingTo }: ChatboxProps) {
   return (
     <Box padding="200" background="bg" width="100%">
+      {replyingTo && (
+        <div style={{ marginBottom: 8 }}>
+          <Tag>{replyingTo}</Tag>
+        </div>
+      )}
       <TextField
         label="Context / Message"
         labelHidden
