@@ -1,4 +1,6 @@
+
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { PolarisProvider } from "./components/PolarisProvider";
 
 export default function App() {
   return (
@@ -15,7 +17,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <PolarisProvider>
+          <Outlet />
+        </PolarisProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
